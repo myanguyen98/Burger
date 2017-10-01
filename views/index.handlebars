@@ -1,0 +1,32 @@
+<h1>Eat Da Burger</h1>
+
+<p>Add a burger or eat an existing one.</p>
+
+<!-- Pass in data from server.js -->
+<ul>
+  {{#each quotes}}
+  	<li>
+  		<p><span class="label"></span> {{this.id}}</p>
+      <p><span class="label"></span> {{this.author}}</p>
+
+      <form action="/{{this.id}}?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{this.id}}">
+        <button type="submit">Delete</button>
+      </form>
+
+      <a href="/{{this.id}}">Update this quote</a>
+  	</li>
+  {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+
+<form class="create-form" action="/" method="POST">
+
+  <div class="form-group">
+    <label for="burger">New Burger</label>
+    <textarea id="burger" name="burger" rows="8" cols="40"></textarea>
+  </div>
+
+  <button type="submit">Add a Burger</button>
+</form>
